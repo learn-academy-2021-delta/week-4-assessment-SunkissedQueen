@@ -59,21 +59,21 @@ var colors2 = ["chartreuse", "indigo", "periwinkle", "ochre", "aquamarine", "saf
 // // let scramArray = array.map(value => array[Math.floor(Math.random() * (i++))]);
 // // return scramArray
 // // };
+
 // //Alright using this tried, tested, and true method of shuffling
 // // using for loop to allow iteration across a decrementing of the indexes of the array. Had to explain it for my brain.
-// `j` the random number created from the for loop using a calculation from Math methods...therefore pulling numbers between 0 and `i` decrementing down. Math random gives a number between 0 and 1 therefore multiply by a another number (i+1) since it is a decimal number we use Math.floor to remove anything beyond the decimal point
+// `t` the random number created from the for loop using a calculation from Math methods...therefore pulling numbers between 0 and `i` decrementing down. Math random gives a number between 0 and 1 therefore multiply by a another number (i+1) since it is a decimal number we use Math.floor to remove anything beyond the decimal point
 // // temp is a place to hold the random numbers that will be used as the indexed position of the looped array--values
 // // Take this indexed position of the looped array and swap it for the indexed position of the random position
 // // now we grab the value at the random position from the stored values
 //  return the shuffled array
-
  const confusion = (array) => {
   let byeFirstArray = array.shift()
    for (let i = array.length - 1; i > 0; i--) {
-     const j = Math.floor(Math.random() * (i + 1));
+     const t = Math.floor(Math.random() * (i + 1));
      const temp = array[i];
-     array[i] = array[j];
-     array[j] = temp;
+     array[i] = array[t];
+     array[t] = temp;
    } return array
  }
  //I was failing when I was getting the right results..then I saw that I should have included the variables inside of the testing code after describe. Got that green ride of passage.
@@ -114,15 +114,13 @@ const bookEnds = (array) => {
 //   let newArray = array.sort((a, b) => a - b);
 // //  let anotherArray = array.sort((a, b) => a - b).shift();
 //  //let e = newArray.splice(0, newArray.length-1);
-//    // let bookArray = array.map(value => {newArray.length === 2? newArray : newArray.slice(1, 1)})
-//  const filArray =array.filter((value, index, array) => index > 0 && index < array.length)
-// return filArray...Telling my brain to calm down and evaluate...
-// } Research, research, research...might need to just grab maximum and minimum then sort. Math.max and Math.min need to use the spread operator on arrays.
+// ...Telling my brain to calm down and evaluate...
+// } Research, research, research...might need to just grab maximum and minimum then sort. Alright so after seeing the use of Math magic... I will use Math.max and Math.min with the spread operator on arrays. Researched a nifty technique to place the numbers in an array. let arrayName = ([variable1, variable2])
 
   let maxNum = Math.max(...array);
   let minNum = Math.min(...array);
-  let newArr =  ([maxNum, minNum]);
-  return newArr.sort((a, b) => a - b);
+  let themTwo =  ([maxNum, minNum]);
+  return themTwo.sort((a, b) => a - b);
 };
 
 bookEnds(nums1);
@@ -156,13 +154,13 @@ var testArray2 = [7, 8, 2, 3, 1, 5, 4]
 //Declare the function and pass the parameter as array.
 const twoLess = (...arrays) => {
   //also had to use spread operator with arrays vice array above...this allowed me to combine all the arguments passed into one array which is now named arrays as the parameter. concat the arrays or use spread operator to join arrays...Getting erros...
-  // let jointArray = [...array1, ...array2]--->this was not iterable which made me irritable...Had to study it again. I had to start with an empty array titled joint Array then used forEach to iterate across the array and spread operator to add one array to empty array.
-  let jointArray = []
+  // let unityArray = [...array1, ...array2]--->this was not iterable which made me irritable...Had to study it again. I had to start with an empty array titled unityArray then used forEach to iterate across the array and spread operator to add one array to empty array.
+  let unityArray = []
     arrays.forEach(array => {
-        jointArray = [...jointArray, ...array]
+        unityArray = [...unityArray, ...array]
     });
     //using the new set syntax...set in js store a collections of values of any type. spread operator helps the new set eliminates duplicates since the set is designed to only hold unique values that can only occur once. Spread operator is beneficial when everything from an array or list needs to be included.
-    return [...new Set([...jointArray])]
+    return [...new Set([...unityArray])]
 }
 
 twoLess(testArray1, testArray2)

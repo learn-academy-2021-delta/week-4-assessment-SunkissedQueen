@@ -49,7 +49,7 @@ is_palindrome3 = 'Rotator'
 # Expected output: 'Rotator is a palindrome'
 
 def back_forth(string)
-  # had to ensure strings were all caps so would not a false false
+  # had to ensure strings were all caps so would not get a false false
   if string.upcase == string.upcase.reverse
     p "#{string} is a palindrome"
   else
